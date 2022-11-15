@@ -1,7 +1,4 @@
-mod cpu;
-mod cartridge;
-mod register;
-mod memory;
+use gb_emu_lib::*;
 
 fn main() {
     println!("Hello, world!");
