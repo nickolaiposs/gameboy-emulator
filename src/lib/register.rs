@@ -46,14 +46,18 @@ impl Registers {
 
     pub fn set_combreg(&mut self, reg: CombReg, val: u16) {
         let (reg1, reg2) = reg.genregs();
-        let higher_byte: u8 = ((val >> 8) & 0xFF) as u8;
-        let lower_byte: u8 = (val & 0xFF) as u8;
+        let higher_byte: u8 = (val >> 8) as u8;
+        let lower_byte: u8 = val as u8;
 
         self.set_genreg(reg1, higher_byte);
         self.set_genreg(reg2, lower_byte);
     }
 
     pub fn set_flagreg(&mut self, reg: FlagReg, val: u8) {
+        if val > 1 {
+            panic!("Cannot set flag regster to any value other than 0 or 1");
+        }
+
         let mask: u8 = 1 << reg.shift();
 
         let new_flagreg: u8 = (self.get_genreg(GenReg::F) & !mask) | (val << reg.shift());
@@ -127,6 +131,7 @@ mod test {
     #[test]
     fn test_flagregs() {
         let mut test_reg = Registers::new();
+        test_reg.set_genreg(GenReg::F, 0);
 
         test_reg.set_flagreg(FlagReg::Z, 1);
         assert_eq!(0b10000000, test_reg.get_genreg(GenReg::F));
@@ -135,7 +140,14 @@ mod test {
         assert_eq!(0b10010000, test_reg.get_genreg(GenReg::F));
 
         test_reg.set_flagreg(FlagReg::Z, 0);
-        assert_eq!(0b0, test_reg.get_flagreg(FlagReg::Z));
+        assert_eq!(0, test_reg.get_flagreg(FlagReg::Z));
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_flagreg_error() {
+        let mut test_reg = Registers::new();
+        test_reg.set_flagreg(FlagReg::Z, 2);
     }
 
     #[test]
