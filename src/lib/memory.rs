@@ -9,3 +9,17 @@ pub struct Memory {
     hram: [u8; 0x80], //FF80-FFFE
     ier: u8 //FFFF
 }
+
+impl Memory {
+    pub fn new() -> Self {
+        Self {
+            cart: Cartridge::new(),
+            vram: [0; 0x200],
+            ram: [0; 0x200],
+            oam: [0; 0xa0],
+            io: [0; 0x80],
+            hram: [0; 0x80],
+            ier: 0
+        }
+    }
+}

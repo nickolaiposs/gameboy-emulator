@@ -6,13 +6,10 @@ pub struct Registers {
 
 impl Registers {
     pub fn new() -> Self {
-        //In order: A, B, C, D, E, F, H, L
-        let gen_regs: [u8; 8] = [0x01, 0x00, 0x13, 0x00, 0xD8, 0xB0, 0x01, 0x4D];
-        
         Self {
-            gen_regs,
-            sp: 0xFFFE,
-            pc: 0x100
+            gen_regs: [0; 8],
+            sp: 0,
+            pc: 0
         }
     }
 
