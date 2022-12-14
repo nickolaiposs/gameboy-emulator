@@ -1,0 +1,171 @@
+/* general */
+body {
+    background-color: #00444F;
+    font-family: Calibri;
+    color: #87e7c6;
+    font-weight: bold;
+}
+
+div {
+    position: relative;
+}
+
+#container {
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 1024px) {
+    #container {
+        margin: 0 auto;
+        max-width: 1280px;
+        display: grid; 
+        grid-template-columns: 1.5fr 1fr; 
+        grid-template-rows: 1fr; 
+        gap: 0px; 
+        grid-template-areas: 
+          "gameboy info"; 
+    }
+}
+
+/* gameboy */
+#gameboy { 
+    grid-area: gameboy;
+    margin: 5% auto;
+    width: 500px;
+    height: 800px;
+    border: solid 5px;
+    border-color: #87e7c6;
+    border-radius: 0px 0px 100px 0px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    gap: 0px; 
+    grid-template-areas: 
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . screen screen screen screen screen screen . ."
+    ". battery screen screen screen screen screen screen . ."
+    ". battery screen screen screen screen screen screen . ."
+    ". . screen screen screen screen screen screen . ."
+    ". . screen screen screen screen screen screen . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". dpad dpad dpad . . . . . ."
+    ". dpad dpad dpad . . . . a-button ."
+    ". dpad dpad dpad . . b-button . . ."
+    ". . . select-start select-start select-start select-start . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."; 
+}
+
+#screen { 
+    width: 320px;
+    height: 288px;
+    grid-area: screen; 
+    background-color: #87e7c6;
+}
+
+#dpad {
+    width: 150px;
+    height: 150px; 
+    grid-area: dpad; 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0px;
+    grid-template-areas:
+    ". dpad-up ."
+    "dpad-left dpad-center dpad-right"
+    ". dpad-down .";
+}
+
+.dpad-button {
+    background-color: #87e7c6;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+}
+
+.dpad-button:active {
+    background-color: #599c85;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+button.AB {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #87e7c6;
+    border: none;
+    font-size: 25px;
+    color: #71c5a8;
+}
+
+button.AB:active {
+    background-color: #599c85;
+}
+
+
+#b-button { 
+    grid-area: b-button;
+    left: 15px; 
+}
+
+#a-button { 
+    grid-area: a-button;
+}
+
+#dpad-up { 
+    grid-area: dpad-up;
+}
+
+#dpad-left { 
+    grid-area: dpad-left;
+}
+
+#dpad-center { 
+    grid-area: dpad-center;
+}
+
+#dpad-right { 
+    grid-area: dpad-right;
+}
+
+#dpad-down { 
+    grid-area: dpad-down;
+}
+
+/* info box */
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 60px;
+}
+
+a {
+    color: #87e7c6;
+    font-size: 25px;
+}
+
+.info {
+    width: 500px;
+    grid-area: info;
+    margin: 0 auto;
+}
+
+#info-box {
+    padding: 20px;
+    width: 80%;
+    height: 500px;
+    margin: 5% auto;
+    border: dashed 5px #87e7c6;
+    font-size: 21px;
+}
