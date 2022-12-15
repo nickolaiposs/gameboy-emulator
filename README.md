@@ -1,6 +1,6 @@
 # Game Boy Emulator
 
-A Game Boy emulator made in Rust. This is a WIP project whose goal is to make an emulator that is able to run games intended for the Nintendo Game Boy system, with a web frontend made with WebAssembly and ReactJs. This project is for my own study purposes, as a way to learn more about how CPU's and computer hardware works, and as a way to become more familiar with Rust.
+A Game Boy emulator made in Rust. This is a WIP project whose goal is to make an emulator in Rust that is able to run games intended for the Nintendo Game Boy system, with a web frontend written in JavaScript. This project is for my own study purposes, as a way to learn more about how CPU's and computer hardware works, and as a way to become more familiar with Rust.
 
 ## ROMs
 
