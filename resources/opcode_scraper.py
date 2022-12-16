@@ -1,5 +1,5 @@
-# opcode table by izik1
-# https://izik1.github.io/gbops/
+# opcode table by izik1: https://izik1.github.io/gbops/
+# i saved it locally as gbops.htm, it is in my .gitignore
 
 # opcode format: opcode name length duration flags prefixed
 # example: 0 "NOP" 1 4t ---- f
