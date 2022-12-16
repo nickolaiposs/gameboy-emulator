@@ -1,2 +1,5 @@
 # target folder
 /target
+
+#python virtual environment
+/resources/.venv
