@@ -1,10 +1,10 @@
-# target folder
+# target and cargo.lock
 /target
+Cargo.lock
 
 #misc folder
 /misc/.venv
 /misc/gbops.htm
 
 #wasm
-build-wasm.sh
 /pkg
