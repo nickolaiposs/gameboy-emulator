@@ -31,6 +31,17 @@
             <div id="a-button"><button class="AB">A</button></div>
             <div id="b-button"><button class="AB">B</button></div>
         </div>     
-    </div>   
+    </div>
+    <script type="module">
+        /* webassembly test */
+        import init from './wasm/gameboy_emulator.js';
+
+        const wasm = await init();
+        var add = wasm.add
+
+        var x = Math.round(Math.random() * 100);
+        var y = Math.round(Math.random() * 100);
+        alert(`WebAssembly test: ${x} + ${y} = ${add(x, y)}`);
+    </script>   
 </body>
 </html>

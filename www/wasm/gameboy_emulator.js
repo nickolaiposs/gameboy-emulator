@@ -1,6 +1,16 @@
 
 let wasm;
 
+/**
+* @param {number} x
+* @param {number} y
+* @returns {number}
+*/
+export function add(x, y) {
+    const ret = wasm.add(x, y);
+    return ret;
+}
+
 async function load(module, imports) {
     if (typeof Response === 'function' && module instanceof Response) {
         if (typeof WebAssembly.instantiateStreaming === 'function') {

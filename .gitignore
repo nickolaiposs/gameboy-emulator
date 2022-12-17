@@ -1,11 +1,10 @@
 # target folder
 /target
 
-#python virtual environment
-/resources/.venv
+#misc folder
+/misc/.venv
+/misc/gbops.htm
 
-#gbops.htm
-/resources/gbops.htm
-
-#build-wasm script
+#wasm
 build-wasm.sh
+/pkg
