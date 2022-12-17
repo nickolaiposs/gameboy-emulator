@@ -1,8 +1,8 @@
 /* general */
 body {
-    background-color: #00444F;
+    background-color: #1e606e;
     font-family: Calibri;
-    color: #87e7c6;
+    color: #c4f0c2;
     font-weight: bold;
 }
 
@@ -36,7 +36,7 @@ div {
     width: 500px;
     height: 800px;
     border: solid 5px;
-    border-color: #87e7c6;
+    border-color: #c4f0c2;
     border-radius: 0px 0px 100px 0px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -65,7 +65,7 @@ div {
     width: 320px;
     height: 288px;
     grid-area: screen; 
-    background-color: #87e7c6;
+    background-color: #c4f0c2;
 }
 
 #dpad {
@@ -83,7 +83,7 @@ div {
 }
 
 .dpad-button {
-    background-color: #87e7c6;
+    background-color: #c4f0c2;
     width: 50px;
     height: 50px;
     padding: 0;
@@ -91,7 +91,7 @@ div {
 }
 
 .dpad-button:active {
-    background-color: #599c85;
+    background-color: #5ab9a8;
 }
 
 button {
@@ -104,14 +104,14 @@ button.AB {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #87e7c6;
+    background-color: #c4f0c2;
     border: none;
     font-size: 25px;
-    color: #71c5a8;
+    color: #80d8b9;
 }
 
 button.AB:active {
-    background-color: #599c85;
+    background-color: #5ab9a8;
 }
 
 #b-button { 
@@ -152,7 +152,7 @@ h1 {
 }
 
 a {
-    color: #87e7c6;
+    color: #c4f0c2;
     font-size: 25px;
 }
 
@@ -166,7 +166,7 @@ a {
     width: 400px;
     height: 500px;
     margin: 5% auto;
-    border: dashed 5px #87e7c6;
+    border: dashed 5px #c4f0c2;
     font-size: 21px;
 }
 
@@ -180,7 +180,7 @@ a {
     font-size: 24px;
     font-weight: bold;
     background-color: inherit;
-    border: solid 3px #87e7c6;
+    border: solid 3px #c4f0c2;
     color: inherit;
     padding: 10px;
     border-radius: 50px;
