@@ -13,14 +13,15 @@
         <div id="info">
             <h1>OCEAN BOY</h1>
             <div id="info-box">
-                <div class="button-container"><button id="loadrom">Load ROM</button></div>
+                <div class="button-container"><button class="info-button" id="loadrom">Load ROM</button></div>
+                <div class="button-container"><button class="info-button" id="configbutton">Change Controls</button></div>
                 <p>
-                    This is where the controls and other information and settings will go.
+                    Where the other information will go.
                 </p>
                 <a id="githublink" href="https://github.com/nickolaiposs/gameboy-emulator" target="_blank">View this project on GitHub</a></div>
         </div> 
         <div id="gameboy">
-            <div id="screen"></div>
+            <div id="screen"><canvas id="gamescreen" width="160" height="144"></canvas></div>
             <div id="dpad">
                 <div class="dpad-button" id="dpad-up"></div>
                 <div class="dpad-button" id="dpad-left"></div>
@@ -32,16 +33,11 @@
             <div id="b-button"><button class="AB">B</button></div>
         </div>     
     </div>
-    <script type="module">
-        /* webassembly test */
-        import init from './wasm/gameboy_emulator.js';
-
-        const wasm = await init();
-        var add = wasm.add
-
-        var x = Math.round(Math.random() * 100);
-        var y = Math.round(Math.random() * 100);
-        alert(`WebAssembly test: ${x} + ${y} = ${add(x, y)}`);
-    </script>   
+    <div class="modal" id="controlconfig">
+        <div class="modal-content">
+            <p>This is where the control configuration will go</p>
+        </div>
+    </div>
+    <script type="module" src="gameboy.js"></script>
 </body>
 </html>
