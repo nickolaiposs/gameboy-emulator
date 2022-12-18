@@ -5,4 +5,3 @@ use wasm_bindgen::prelude::*;
 pub fn add(x: isize, y: isize) -> isize {
     x + y
 }
-
