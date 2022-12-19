@@ -66,6 +66,7 @@ div {
     height: 288px;
     grid-area: screen; 
     background-color: #c4f0c2;
+    outline: solid 3px #2d1b00;
 }
 
 #gamescreen {
@@ -233,4 +234,11 @@ a {
     border: solid 5px #c4f0c2;
     width: 30%;
     height: 50%;
+  }
+
+  .modal-close {
+    position: fixed;
+    font-weight: bold;
+    top: 10px;
+    left: 10px;
   }

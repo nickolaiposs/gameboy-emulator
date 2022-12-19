@@ -2,9 +2,10 @@ import init from './wasm/gameboy_emulator.js';
 
 //wasm imports
 const wasm = await init();
-var add = wasm.add
+const add = wasm.add
 
-const canvas = document.querySelector("#gamescreen")
+const canvas = document.querySelector("#gamescreen");
+const ctx = canvas.getContext("2d");
 const canvas_width = parseInt(canvas.getAttribute("width"));
 const canvas_height = parseInt(canvas.getAttribute("height"));
 
@@ -15,7 +16,7 @@ function wasm_test() {
 }
 
 //draw test
-function draw() {
+/* function draw() {
     if (canvas.getContext) {
       const ctx = canvas.getContext("2d");
 
@@ -26,9 +27,9 @@ function draw() {
       ctx.fillRect(30, 30, 50, 50);
     }
 }
+ */
 
-//render
-function render() {
+/* function render() {
     const ctx = canvas.getContext("2d");
     var frame = ctx.createImageData(canvas_width, canvas_height);
     var data = frame.data;
@@ -43,15 +44,29 @@ function render() {
     }
 
     ctx.putImageData(frame, 0, 0);
-}
+} */
+
+/* function draw(data) {
+    let ctx = canvas.getContext("2d");
+    let frame = new ImageData(data, 160, 144);
+    ctx.putImageData(frame, 0, 0); 
+} */
 
 function toggle_config() {
     document.querySelector("#controlconfig").classList.toggle("visible");
 }
 
 //onclick listeners
-document.querySelector("#controlconfig").onclick = toggle_config;
+document.querySelector("#controlexit").onclick = toggle_config;
+//document.querySelector("#controlconfig").onclick = toggle_config;
 document.querySelector("#configbutton").onclick = toggle_config;
 document.querySelector("#loadrom").onclick = wasm_test;
 
-render();
+//render wasm
+try {
+    wasm.render(ctx, canvas_width, canvas_height);
+} catch (ex) {
+    console.log("error render");
+}
+
+console.log(add(1, 2));
