@@ -66,7 +66,7 @@ document.querySelector("#loadrom").onclick = wasm_test;
 try {
     wasm.render(ctx, canvas_width, canvas_height);
 } catch (ex) {
-    console.log("error render");
+    console.log(ex.message);
 }
 
 console.log(add(1, 2));
