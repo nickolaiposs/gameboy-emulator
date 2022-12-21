@@ -9,10 +9,7 @@ pub fn add(x: isize, y: isize) {
 
 #[wasm_bindgen]
 pub fn render(ctx: &CanvasRenderingContext2d, width: u32, height: u32) -> Result<(), JsValue> { 
-    console::log_1(&"render initialized".into());
     let data = frame_data(width, height);
-    console::log_1(&data.len().to_string().into());
-    console::log_1(&"render put into image data".into());
     let data = ImageData::new_with_u8_clamped_array_and_sh(Clamped(&data), width, height)?;
 
     ctx.put_image_data(&data, 0.0, 0.0)
