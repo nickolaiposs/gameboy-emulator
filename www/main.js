@@ -1,5 +1,8 @@
-import init from "./wasm/gameboy_emulator.js";
+import init, { render, add } from "./wasm/gameboy_emulator.js";
 
 const wasm = await init();
 
-wasm.add(1, 2);
+const canvas = document.querySelector("#gamescreen");
+const ctx = canvas.getContext("2d");
+
+render(ctx, 160, 144);

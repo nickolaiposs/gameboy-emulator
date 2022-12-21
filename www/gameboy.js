@@ -1,4 +1,4 @@
-import init from './www/wasm/gameboy_emulator.js';
+import init from './wasm/gameboy_emulator.js';
 
 //wasm imports
 const wasm = await init();
