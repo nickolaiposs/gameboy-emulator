@@ -1,13 +1,20 @@
 use wasm_bindgen::{prelude::*, Clamped};
 use web_sys::{CanvasRenderingContext2d, ImageData, console};
 
-//webassembly test
-#[wasm_bindgen]
-pub fn add(x: isize, y: isize) -> isize {
-    x + y
-}
 
 #[wasm_bindgen]
+extern "C" {
+    fn alert(s: &str);
+}
+
+//webassembly test
+#[wasm_bindgen]
+pub fn add(x: isize, y: isize) {
+    let sum = (x + y).to_string();
+    alert(&sum);
+}
+
+/* #[wasm_bindgen]
 pub fn render(ctx: &CanvasRenderingContext2d, width: u32, height: u32) -> Result<(), JsValue> { 
     console::log_1(&"render initialized".into());
     let mut data = frame_data(width, height);
@@ -29,4 +36,4 @@ fn frame_data(width: u32, height: u32) -> Vec<u8> {
     }
 
     frame_data
-}
+} */
