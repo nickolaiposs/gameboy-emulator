@@ -70,36 +70,6 @@ function getInt32Memory0() {
     }
     return cachedInt32Memory0;
 }
-/**
-* @param {CanvasRenderingContext2D} ctx
-* @param {number} width
-* @param {number} height
-*/
-export function render(ctx, width, height) {
-    try {
-        const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
-        wasm.render(retptr, addBorrowedObject(ctx), width, height);
-        var r0 = getInt32Memory0()[retptr / 4 + 0];
-        var r1 = getInt32Memory0()[retptr / 4 + 1];
-        if (r1) {
-            throw takeObject(r0);
-        }
-    } finally {
-        wasm.__wbindgen_add_to_stack_pointer(16);
-        heap[stack_pointer++] = undefined;
-    }
-}
-
-/**
-* @param {Uint8Array} byte_array
-*/
-export function load_rom(byte_array) {
-    try {
-        wasm.load_rom(addBorrowedObject(byte_array));
-    } finally {
-        heap[stack_pointer++] = undefined;
-    }
-}
 
 let cachedUint8ClampedMemory0 = new Uint8ClampedArray();
 
@@ -119,6 +89,64 @@ function handleError(f, args) {
         return f.apply(this, args);
     } catch (e) {
         wasm.__wbindgen_exn_store(addHeapObject(e));
+    }
+}
+/**
+*/
+export class Game {
+
+    static __wrap(ptr) {
+        const obj = Object.create(Game.prototype);
+        obj.ptr = ptr;
+
+        return obj;
+    }
+
+    __destroy_into_raw() {
+        const ptr = this.ptr;
+        this.ptr = 0;
+
+        return ptr;
+    }
+
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_game_free(ptr);
+    }
+    /**
+    */
+    constructor() {
+        const ret = wasm.game_new();
+        return Game.__wrap(ret);
+    }
+    /**
+    * @param {Uint8Array} byte_array
+    */
+    load_rom(byte_array) {
+        try {
+            wasm.game_load_rom(this.ptr, addBorrowedObject(byte_array));
+        } finally {
+            heap[stack_pointer++] = undefined;
+        }
+    }
+    /**
+    * @param {CanvasRenderingContext2D} ctx
+    * @param {number} width
+    * @param {number} height
+    */
+    render(ctx, width, height) {
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            wasm.game_render(retptr, this.ptr, addBorrowedObject(ctx), width, height);
+            var r0 = getInt32Memory0()[retptr / 4 + 0];
+            var r1 = getInt32Memory0()[retptr / 4 + 1];
+            if (r1) {
+                throw takeObject(r0);
+            }
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+            heap[stack_pointer++] = undefined;
+        }
     }
 }
 

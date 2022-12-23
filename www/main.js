@@ -1,7 +1,8 @@
-import init, { render, add, load_rom } from "./wasm/gameboy_emulator.js";
+import init, { add, Game } from "./wasm/gameboy_emulator.js";
 
 await init();
 
+const game = new Game();
 const canvas = document.querySelector("#gamescreen");
 const ctx = canvas.getContext("2d");
 const canvas_width = parseInt(canvas.getAttribute("width"));
@@ -26,7 +27,7 @@ function loadRom(files) {
     }
 
     var rom = files[0];
-    var fileExtension = rom.name.split(".").pop().toLowerCase()
+    var fileExtension = rom.name.split(".").pop().toLowerCase();
 
      if (fileExtension != "gb") {
         alert("Invalid file type");
@@ -36,12 +37,7 @@ function loadRom(files) {
     var fileReader = new FileReader();
     var byteArray;
 
-    fileReader.onload = (event) => {
-        byteArray = new Uint8Array(event.target.result)
-        console.log(byteArray);
-        load_rom(byteArray);
-    };
-
+    fileReader.onload = (event) => game.load_rom(new Uint8Array(event.target.result));
     fileReader.readAsArrayBuffer(rom);
 }
 
@@ -53,4 +49,4 @@ document.querySelector("#configbutton").onclick = toggleConfig;
 const romButton = document.querySelector("#loadrom");
 romButton.onclick = () => fileBrowse(loadRom, ".gb");
 
-render(ctx, canvas_width, canvas_height);
+game.render(ctx, canvas_width, canvas_height);

@@ -6,23 +6,33 @@
 */
 export function add(x: number, y: number): void;
 /**
+*/
+export class Game {
+  free(): void;
+/**
+*/
+  constructor();
+/**
+* @param {Uint8Array} byte_array
+*/
+  load_rom(byte_array: Uint8Array): void;
+/**
 * @param {CanvasRenderingContext2D} ctx
 * @param {number} width
 * @param {number} height
 */
-export function render(ctx: CanvasRenderingContext2D, width: number, height: number): void;
-/**
-* @param {Uint8Array} byte_array
-*/
-export function load_rom(byte_array: Uint8Array): void;
+  render(ctx: CanvasRenderingContext2D, width: number, height: number): void;
+}
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly add: (a: number, b: number) => void;
-  readonly render: (a: number, b: number, c: number, d: number) => void;
-  readonly load_rom: (a: number) => void;
+  readonly __wbg_game_free: (a: number) => void;
+  readonly game_new: () => number;
+  readonly game_load_rom: (a: number, b: number) => void;
+  readonly game_render: (a: number, b: number, c: number, d: number, e: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_exn_store: (a: number) => void;
 }
