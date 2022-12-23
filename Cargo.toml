@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
-#name = "gb_emu_lib"
 path = "src/lib/lib.rs"
 crate-type = ["cdylib"]
 
@@ -19,11 +18,7 @@ js-sys = "0.3.60"
 [dependencies.web-sys]
 version = "0.3.6"
 features = [
-  'CanvasRenderingContext2d',
-  'Document',
-  'Element',
-  'HtmlCanvasElement',
-  'Window',
-  'ImageData',
+  "CanvasRenderingContext2d",
+  "ImageData",
   "console"
 ]

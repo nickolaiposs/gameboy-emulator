@@ -35,7 +35,6 @@ function loadRom(files) {
     }
 
     var fileReader = new FileReader();
-    var byteArray;
 
     fileReader.onload = (event) => game.load_rom(new Uint8Array(event.target.result));
     fileReader.readAsArrayBuffer(rom);

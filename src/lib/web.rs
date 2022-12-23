@@ -21,7 +21,7 @@ impl Game {
     pub fn load_rom(&mut self, byte_array: &Uint8Array) {
         let mut buffer = vec![0; byte_array.length() as usize];
         byte_array.copy_to(&mut buffer);
-        let result = &format!("{:b}", buffer[64]);
+        let result = format!("{:b}", buffer[64]);
         console::log_1(&result.into());
     }
 
