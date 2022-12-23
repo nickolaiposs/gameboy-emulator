@@ -5,3 +5,6 @@ Cargo.lock
 #misc folder
 /misc/.venv
 /misc/gbops.htm
+
+#personal ROMs folder
+/roms

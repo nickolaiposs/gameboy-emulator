@@ -1,5 +1,6 @@
 use wasm_bindgen::{prelude::*, Clamped};
 use web_sys::{CanvasRenderingContext2d, ImageData, console};
+use js_sys::Uint8Array;
 
 //webassembly test
 #[wasm_bindgen]
@@ -13,6 +14,14 @@ pub fn render(ctx: &CanvasRenderingContext2d, width: u32, height: u32) -> Result
     let data = ImageData::new_with_u8_clamped_array_and_sh(Clamped(&data), width, height)?;
 
     ctx.put_image_data(&data, 0.0, 0.0)
+}
+
+#[wasm_bindgen]
+pub fn load_rom(byte_array: &Uint8Array) {
+    let mut buffer = vec![0; byte_array.length() as usize];
+    byte_array.copy_to(&mut buffer);
+    let result = &format!("{:b}", buffer[64]);
+    console::log_1(&result.into());
 }
 
 fn frame_data(width: u32, height: u32) -> Vec<u8> {

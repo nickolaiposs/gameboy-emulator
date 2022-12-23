@@ -11,6 +11,10 @@ export function add(x: number, y: number): void;
 * @param {number} height
 */
 export function render(ctx: CanvasRenderingContext2D, width: number, height: number): void;
+/**
+* @param {Uint8Array} byte_array
+*/
+export function load_rom(byte_array: Uint8Array): void;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -18,6 +22,7 @@ export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly add: (a: number, b: number) => void;
   readonly render: (a: number, b: number, c: number, d: number) => void;
+  readonly load_rom: (a: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_exn_store: (a: number) => void;
 }

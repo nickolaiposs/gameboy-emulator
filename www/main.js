@@ -1,4 +1,4 @@
-import init, { render, add } from "./wasm/gameboy_emulator.js";
+import init, { render, add, load_rom } from "./wasm/gameboy_emulator.js";
 
 await init();
 
@@ -7,25 +7,50 @@ const ctx = canvas.getContext("2d");
 const canvas_width = parseInt(canvas.getAttribute("width"));
 const canvas_height = parseInt(canvas.getAttribute("height"));
 
-
-function toggle_config() {
+function toggleConfig() {
     document.querySelector("#controlconfig").classList.toggle("visible");
 }
 
-//onclick listeners
-document.querySelector("#controlexit").onclick = toggle_config;
-document.querySelector("#controlconfig").onclick = toggle_config;
-document.querySelector("#configbutton").onclick = toggle_config;
-
-//add rom filebrowser
-const rom_button = document.querySelector("#loadrom");
-rom_button.onclick = file_browse;
-
-function file_browse() {
+function fileBrowse(func, accept) {
     var inputElement = document.createElement("input");
     inputElement.type = "file";
-    inputElement.accept = ".rom";
+    inputElement.accept = accept;
+    inputElement.addEventListener("change", (event) => func(event.target.files));
     inputElement.click();
 }
+
+function loadRom(files) {
+    if (files.length != 1) {
+        alert("Invalid amount of files inserted");
+        return
+    }
+
+    var rom = files[0];
+    var fileExtension = rom.name.split(".").pop().toLowerCase()
+
+     if (fileExtension != "gb") {
+        alert("Invalid file type");
+        return
+    }
+
+    var fileReader = new FileReader();
+    var byteArray;
+
+    fileReader.onload = (event) => {
+        byteArray = new Uint8Array(event.target.result)
+        console.log(byteArray);
+        load_rom(byteArray);
+    };
+
+    fileReader.readAsArrayBuffer(rom);
+}
+
+//onclick listeners
+document.querySelector("#controlconfig").onclick = toggleConfig;
+document.querySelector("#configbutton").onclick = toggleConfig;
+
+//add rom filebrowser
+const romButton = document.querySelector("#loadrom");
+romButton.onclick = () => fileBrowse(loadRom, ".gb");
 
 render(ctx, canvas_width, canvas_height);
