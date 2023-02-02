@@ -22,6 +22,11 @@ export class Game {
 * @param {number} height
 */
   render(ctx: CanvasRenderingContext2D, width: number, height: number): void;
+/**
+* @param {number} key
+* @param {boolean} pressed
+*/
+  update_key_input(key: number, pressed: boolean): void;
 }
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
@@ -33,6 +38,7 @@ export interface InitOutput {
   readonly game_new: () => number;
   readonly game_load_rom: (a: number, b: number) => void;
   readonly game_render: (a: number, b: number, c: number, d: number, e: number) => void;
+  readonly game_update_key_input: (a: number, b: number, c: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_exn_store: (a: number) => void;
 }

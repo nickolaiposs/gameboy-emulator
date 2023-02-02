@@ -148,6 +148,13 @@ export class Game {
             heap[stack_pointer++] = undefined;
         }
     }
+    /**
+    * @param {number} key
+    * @param {boolean} pressed
+    */
+    update_key_input(key, pressed) {
+        wasm.game_update_key_input(this.ptr, key, pressed);
+    }
 }
 
 async function load(module, imports) {

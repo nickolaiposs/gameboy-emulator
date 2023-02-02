@@ -82,7 +82,7 @@ pub enum GenReg {A, B, C, D, E, F, H, L}
 
 pub enum CombReg {AF, BC, DE, HL}
 
-pub enum FlagReg { Z, N, H, C }
+pub enum FlagReg {Z, N, H, C}
 
 impl GenReg {
     fn index(&self) -> usize {
