@@ -163,7 +163,7 @@ h1 {
 
 a {
     color: #c4f0c2;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .info {
@@ -177,7 +177,7 @@ a {
     height: 500px;
     margin: 5% auto;
     border: dashed 5px #c4f0c2;
-    font-size: 21px;
+    font-size: 25px;
 }
 
 .button-container {
@@ -193,12 +193,17 @@ a {
     background-color: inherit;
     color: inherit;
     border: solid 3px #c4f0c2;
-    border-radius: 50px;
+    border-radius: 0 0 25px 0;
+    /*border-radius: 50px;*/
     padding: 10px;
 }
 
 .info-button:active {
     background-color: #5ab9a8;
+}
+
+.key {
+    color: #5ab9a8;
 }
 
 #githublink {
