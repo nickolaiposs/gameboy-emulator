@@ -35,7 +35,7 @@ impl Game {
     }
 
     pub fn tick (&mut self, deltatime: u16) {
-        console::log_1(&deltatime.into());
+        //console::log_1(&deltatime.into());
     }
 
     /* JOYPAD INPUT MATCHING
