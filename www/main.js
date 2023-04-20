@@ -64,14 +64,26 @@ function loadRom(files) {
     var fileExtension = rom.name.split(".").pop().toLowerCase();
 
     if (fileExtension != "gb") {
-        alert("Invalid file type");
-        return
+        fileReader.onload = (event) => game.load_rom(new Uint8Array(event.target.result));
+        fileReader.readAsArrayBuffer(rom);
     }
+}
 
-    var fileReader = new FileReader();
+var lastTimeStamp = 0;
+var deltaTime = 0;
+function gameLoop(timeElapsed) {
+    window.requestAnimationFrame(gameLoop);
 
-    fileReader.onload = (event) => game.load_rom(new Uint8Array(event.target.result));
-    fileReader.readAsArrayBuffer(rom);
+    if (timeElapsed) { deltaTime = timeElapsed - lastTimeStamp; }
+    lastTimeStamp = timeElapsed;
+
+    // gameloop 
+    // step 1: update keyboard input
+    // step 2: tick game
+    // step 3: render screen
+
+
+    game.tick(deltaTime);
 }
 
 var a_button = false;
@@ -89,3 +101,6 @@ game.render(ctx, canvas_width, canvas_height);
 
 document.addEventListener('keydown', (event) => { updateKeyInput(event.code, true)});
 document.addEventListener('keyup', (event) => { updateKeyInput(event.code, false)});
+
+gameLoop();
+

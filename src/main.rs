@@ -4,6 +4,5 @@
 //this exists mainly for debugging purposes
 fn main() {
     println!("Hello, world!");
-
 //    println!("{:?}", web::load_font());
 }

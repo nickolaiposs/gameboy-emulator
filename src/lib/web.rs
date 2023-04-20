@@ -34,6 +34,10 @@ impl Game {
         ctx.put_image_data(&data, 0.0, 0.0)
     }
 
+    pub fn tick (&mut self, deltatime: u16) {
+        console::log_1(&deltatime.into());
+    }
+
     /* JOYPAD INPUT MATCHING
         A: 0
         B: 1
@@ -43,6 +47,7 @@ impl Game {
         DPAD-LEFT: 5
         DPAD-UP: 6
         DPAD-DOWN: 7 */
+
     pub fn update_key_input(&mut self, key: u8, pressed: bool) {
         //log testing
         let result = format!("{} {}", key, pressed);
