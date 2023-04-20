@@ -64,9 +64,14 @@ function loadRom(files) {
     var fileExtension = rom.name.split(".").pop().toLowerCase();
 
     if (fileExtension != "gb") {
-        fileReader.onload = (event) => game.load_rom(new Uint8Array(event.target.result));
-        fileReader.readAsArrayBuffer(rom);
+        alert("Invalid file type");
+        return
     }
+
+    var fileReader = new FileReader();
+
+    fileReader.onload = (event) => game.load_rom(new Uint8Array(event.target.result));
+    fileReader.readAsArrayBuffer(rom);
 }
 
 var lastTimeStamp = 0;
@@ -81,7 +86,6 @@ function gameLoop(timeElapsed) {
     // step 1: update keyboard input
     // step 2: tick game
     // step 3: render screen
-
 
     game.tick(deltaTime);
 }
