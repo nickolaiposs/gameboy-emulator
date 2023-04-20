@@ -59,7 +59,7 @@ class GameBoy {
     updateKeyInput(keyCode, pressed) {
         if (keyCode in this.keymap) {
             var key = this.keymap[keyCode];
-    
+            romButton = document.querySelector
             if (this.joypad[key] != pressed) {
                 this.joypad[key] = pressed;
                 this.game.update_key_input(key, pressed);

@@ -3,7 +3,7 @@ import GameBoy from "./javascript/gameboy.js";
 
 await init();
 
-/*---SDFJSL---*/
+/*---CREATE GAMEBOY OBJECT---*/
 const canvas = document.querySelector("#gamescreen");
 const ctx = canvas.getContext("2d");
 const canvas_width = parseInt(canvas.getAttribute("width"));
