@@ -3,7 +3,7 @@
 export const memory: WebAssembly.Memory;
 export function add(a: number, b: number): void;
 export function __wbg_game_free(a: number): void;
-export function game_new(): number;
+export function game_new(a: number, b: number): number;
 export function game_load_rom(a: number, b: number): void;
 export function game_render(a: number, b: number, c: number, d: number, e: number): void;
 export function game_tick(a: number, b: number): void;

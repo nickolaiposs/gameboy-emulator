@@ -3,7 +3,40 @@ import GameBoy from "./javascript/gameboy.js";
 
 await init();
 
-/*---CREATE GAMEBOY OBJECT---*/
+/*---JOYPAD INPUT MATCHING---*/
+/*  
+    A: 0
+    B: 1
+    SELECT: 2
+    START: 3
+    DPAD-RIGHT: 4
+    DPAD-LEFT: 5
+    DPAD-UP: 6
+    DPAD-DOWN: 7 
+*/
+    
+const buttonmap = {
+    "#a-button": 0,
+    "#b-button": 1,
+    "#dpad-right": 4,
+    "#dpad-left": 5,
+    "#dpad-up": 6,
+    "#dpad-down": 7
+};
+        
+const keymap = {
+    "KeyA": 0,
+    "KeyB": 1,
+    "Enter": 2,
+    "Space": 3,
+    "ArrowRight": 4,
+    "ArrowLeft": 5,
+    "ArrowUp": 6,
+    "ArrowDown": 7
+};
+
+    
+/*---INITIALIZE GAMEBOY OBJECT---*/
 const canvas = document.querySelector("#gamescreen");
 const ctx = canvas.getContext("2d");
 const canvas_width = parseInt(canvas.getAttribute("width"));
@@ -29,21 +62,18 @@ romButton.onclick = () => fileBrowse(gameBoy.loadRom.bind(gameBoy), ".gb");
 // document.querySelector("#controlconfig").onclick = toggleConfig;
 // document.querySelector("#configbutton").onclick = toggleConfig;
 
-document.addEventListener('keydown', (event) => { gameBoy.updateKeyInput(event.code, true)});
-document.addEventListener('keyup', (event) => { gameBoy.updateKeyInput(event.code, false)});
+document.addEventListener('keydown', (event) => { 
+    if (event.code in keymap) gameBoy.updateKeyInput(keymap[event.code], true) 
+});
 
-document.querySelector("#a-button").onmousedown = () => { gameBoy.updateKeyInput("KeyA", true); };
-document.querySelector("#a-button").onmouseup = () => { gameBoy.updateKeyInput("KeyA", false); };
-document.querySelector("#b-button").onmousedown = () => { gameBoy.updateKeyInput("KeyB", true); };
-document.querySelector("#b-button").onmouseup = () => { gameBoy.updateKeyInput("KeyB", false); };
-document.querySelector("#dpad-up").onmousedown = () => { gameBoy.updateKeyInput("ArrowUp", true); };
-document.querySelector("#dpad-up").onmouseup = () => { gameBoy.updateKeyInput("ArrowUp", false); };
-document.querySelector("#dpad-down").onmousedown = () => { gameBoy.updateKeyInput("ArrowDown", true); };
-document.querySelector("#dpad-down").onmouseup = () => { gameBoy.updateKeyInput("ArrowDown", false); };
-document.querySelector("#dpad-right").onmousedown = () => { gameBoy.updateKeyInput("ArrowRight", true); };
-document.querySelector("#dpad-right").onmouseup = () => { gameBoy.updateKeyInput("ArrowRight", false); };
-document.querySelector("#dpad-left").onmousedown = () => { gameBoy.updateKeyInput("ArrowLeft", true); };
-document.querySelector("#dpad-left").onmouseup = () => { gameBoy.updateKeyInput("ArrowLeft", false); };
+document.addEventListener('keyup', (event) => { 
+    if (event.code in keymap) gameBoy.updateKeyInput(keymap[event.code], false) 
+});
+
+for (const [key, value] of Object.entries(buttonmap)) {
+    document.querySelector(key).onmousedown = () => { gameBoy.updateKeyInput(value, true); };
+    document.querySelector(key).onmouseup = () => { gameBoy.updateKeyInput(value, false); };
+}
 
 /*---START GAMEBOY---*/
 gameBoy.start();

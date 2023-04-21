@@ -1,6 +1,7 @@
 use wasm_bindgen::{prelude::*, Clamped};
 use web_sys::{CanvasRenderingContext2d, ImageData, console};
 use js_sys::Uint8Array;
+use rand::Rng;
 
 //webassembly test
 #[wasm_bindgen]
@@ -14,7 +15,7 @@ pub struct Game { }
 #[wasm_bindgen]
 impl Game {
     #[wasm_bindgen(constructor)]
-    pub fn new() -> Game {
+    pub fn new(width: u32, height: u32) -> Self {
         Self { }
     }
 
@@ -38,16 +39,6 @@ impl Game {
         //console::log_1(&deltatime.into());
     }
 
-    /* JOYPAD INPUT MATCHING
-        A: 0
-        B: 1
-        SELECT: 2
-        START: 3
-        DPAD-RIGHT: 4
-        DPAD-LEFT: 5
-        DPAD-UP: 6
-        DPAD-DOWN: 7 */
-
     pub fn update_key_input(&mut self, key: u8, pressed: bool) {
         //log testing
         let result = format!("{} {}", key, pressed);
@@ -58,11 +49,12 @@ impl Game {
 fn frame_data(width: u32, height: u32) -> Vec<u8> {
     let mut frame_data: Vec<u8> = Vec::new();
 
+    let color = (rand::thread_rng().gen_range(0..=255), rand::thread_rng().gen_range(0..=255), rand::thread_rng().gen_range(0..=255));
     for _x in 0..width {
         for _y in 0..height {
-            frame_data.push(255);
-            frame_data.push(0);
-            frame_data.push(0);
+            frame_data.push(color.0);
+            frame_data.push(color.1);
+            frame_data.push(color.2);
             frame_data.push(255);
         }
     }

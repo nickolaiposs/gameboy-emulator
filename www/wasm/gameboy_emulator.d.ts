@@ -10,8 +10,10 @@ export function add(x: number, y: number): void;
 export class Game {
   free(): void;
 /**
+* @param {number} width
+* @param {number} height
 */
-  constructor();
+  constructor(width: number, height: number);
 /**
 * @param {Uint8Array} byte_array
 */
@@ -39,7 +41,7 @@ export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly add: (a: number, b: number) => void;
   readonly __wbg_game_free: (a: number) => void;
-  readonly game_new: () => number;
+  readonly game_new: (a: number, b: number) => number;
   readonly game_load_rom: (a: number, b: number) => void;
   readonly game_render: (a: number, b: number, c: number, d: number, e: number) => void;
   readonly game_tick: (a: number, b: number) => void;

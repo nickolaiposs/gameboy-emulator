@@ -8,27 +8,6 @@ class GameBoy {
         this.deltaTime = 0;
         this.lastTimeStamp = 0;
         this.stopGame = null;
-
-        /* JOYPAD INPUT MATCHING
-            A: 0
-            B: 1
-            SELECT: 2
-            START: 3
-            DPAD-RIGHT: 4
-            DPAD-LEFT: 5
-            DPAD-UP: 6
-            DPAD-DOWN: 7 */
-        this.joypad = [false, false, false, false, false, false, false, false];
-        this.keymap = {
-            "KeyA": 0,
-            "KeyB": 1,
-            "Enter": 2,
-            "Space": 3,
-            "ArrowRight": 4,
-            "ArrowLeft": 5,
-            "ArrowUp": 6,
-            "ArrowDown": 7
-        }
         
         this.game = new Game();
     }
@@ -56,15 +35,8 @@ class GameBoy {
         fileReader.readAsArrayBuffer(rom);
     }
 
-    updateKeyInput(keyCode, pressed) {
-        if (keyCode in this.keymap) {
-            var key = this.keymap[keyCode];
-
-            if (this.joypad[key] != pressed) {
-                this.joypad[key] = pressed;
-                this.game.update_key_input(key, pressed);
-            }
-        }
+    updateKeyInput(key, pressed) {
+        this.game.update_key_input(key, pressed);
     }
 
     gameLoop(timeElapsed) {
@@ -72,17 +44,12 @@ class GameBoy {
     
         this.deltaTime = timeElapsed - this.lastTimeStamp;
         this.lastTimeStamp = timeElapsed;
-    
-        // gameloop 
-        // step 1: update keyboard input
-        // step 2: tick game
-        // step 3: render screen
-    
+
         this.game.tick(this.deltaTime);
+        this.game.render(this.ctx, this.canvas_width, this.canvas_height);
     }
 
     start() {
-        this.game.render(this.ctx, this.canvas_width, this.canvas_height);
         this.gameLoop();
     }
 
