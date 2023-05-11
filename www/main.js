@@ -70,9 +70,9 @@ document.addEventListener('keyup', (event) => {
     if (event.code in keymap) gameBoy.updateKeyInput(keymap[event.code], false) 
 });
 
-for (const [key, value] of Object.entries(buttonmap)) {
-    document.querySelector(key).onmousedown = () => { gameBoy.updateKeyInput(value, true); };
-    document.querySelector(key).onmouseup = () => { gameBoy.updateKeyInput(value, false); };
+for (const [button, keyCode] of Object.entries(buttonmap)) {
+    document.querySelector(button).onmousedown = () => { gameBoy.updateKeyInput(keyCode, true); };
+    document.querySelector(button).onmouseup = () => { gameBoy.updateKeyInput(keyCode, false); };
 }
 
 /*---START GAMEBOY---*/

@@ -10,13 +10,19 @@ pub fn add(x: isize, y: isize) {
 }
 
 #[wasm_bindgen]
-pub struct Game { }
+pub struct Game { 
+    fps: u16,
+    time_elapsed: u16
+}
 
 #[wasm_bindgen]
 impl Game {
     #[wasm_bindgen(constructor)]
     pub fn new(width: u32, height: u32) -> Self {
-        Self { }
+        Self { 
+            fps: 0,
+            time_elapsed: 0
+        }
     }
 
     pub fn load_rom(&mut self, byte_array: &Uint8Array) {
@@ -36,6 +42,15 @@ impl Game {
     }
 
     pub fn tick (&mut self, deltatime: u16) {
+        self.time_elapsed += deltatime;
+
+        if self.time_elapsed >= 1000 {
+            console::log_1(&self.fps.into());
+            self.fps = 0;
+            self.time_elapsed = 0;
+        }
+
+        self.fps += 1;
         //console::log_1(&deltatime.into());
     }
 
@@ -49,12 +64,11 @@ impl Game {
 fn frame_data(width: u32, height: u32) -> Vec<u8> {
     let mut frame_data: Vec<u8> = Vec::new();
 
-    let color = (rand::thread_rng().gen_range(0..=255), rand::thread_rng().gen_range(0..=255), rand::thread_rng().gen_range(0..=255));
     for _x in 0..width {
         for _y in 0..height {
-            frame_data.push(color.0);
-            frame_data.push(color.1);
-            frame_data.push(color.2);
+            frame_data.push(255);
+            frame_data.push(0);
+            frame_data.push(0);
             frame_data.push(255);
         }
     }

@@ -2,11 +2,12 @@
 /target
 Cargo.lock
 
-#misc folder
+# misc folder
 /misc/.venv
 /misc/gbops.htm
 
-#personal ROMs folder
+# personal ROMs folder
 /roms
 
-#personal ROMs folder
+#commands.rs
+/src/lib/commands.rs
