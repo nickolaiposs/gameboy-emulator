@@ -8,6 +8,3 @@ Cargo.lock
 
 # personal ROMs folder
 /roms
-
-#commands.rs
-/src/lib/commands.rs
