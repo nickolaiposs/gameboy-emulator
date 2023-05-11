@@ -59,8 +59,8 @@ function fileBrowse(func, accept) {
 /*---INPUT LISTENERS---*/
 const romButton = document.querySelector("#loadrom");
 romButton.onclick = () => fileBrowse(gameBoy.loadRom.bind(gameBoy), ".gb");
-// document.querySelector("#controlconfig").onclick = toggleConfig;
-// document.querySelector("#configbutton").onclick = toggleConfig;
+document.querySelector("#controlexit").onclick = toggleConfig;
+document.querySelector("#configbutton").onclick = toggleConfig;
 
 document.addEventListener('keydown', (event) => { 
     if (event.code in keymap) gameBoy.updateKeyInput(keymap[event.code], true) 
