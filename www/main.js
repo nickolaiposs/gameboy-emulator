@@ -59,6 +59,8 @@ function fileBrowse(func, accept) {
 /*---INPUT LISTENERS---*/
 const romButton = document.querySelector("#loadrom");
 romButton.onclick = () => fileBrowse(gameBoy.loadRom.bind(gameBoy), ".gb");
+
+
 document.querySelector("#controlexit").onclick = toggleConfig;
 document.querySelector("#configbutton").onclick = toggleConfig;
 
@@ -76,5 +78,5 @@ for (const [button, keyCode] of Object.entries(buttonmap)) {
 }
 
 /*---START GAMEBOY---*/
-gameBoy.start();
+//gameBoy.start();
 
