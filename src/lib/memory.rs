@@ -22,4 +22,8 @@ impl Memory {
             ier: 0
         }
     }
+
+    pub fn load_rom(&mut self, buffer: Vec<u8>) {
+        self.cart.load_rom(buffer);
+    }
 }

@@ -1,4 +1,4 @@
-import init, { add, Game } from "./wasm/gameboy_emulator.js";
+import init from "./wasm/gameboy_emulator.js";
 import GameBoy from "./javascript/gameboy.js";
 
 await init();

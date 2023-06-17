@@ -57,6 +57,10 @@ impl CPU {
         [$FF4B] = $00   ; WX
         [$FFFF] = $00   ; IE */
     }
+
+    pub fn load_rom(&mut self, buffer: Vec<u8>) {
+        self.mem.load_rom(buffer);
+    }
 }
 
 

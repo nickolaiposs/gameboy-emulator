@@ -3,6 +3,8 @@ use web_sys::{CanvasRenderingContext2d, ImageData, console};
 use js_sys::Uint8Array;
 use rand::Rng;
 
+use crate::cpu::CPU;
+
 //webassembly test
 #[wasm_bindgen]
 pub fn add(x: isize, y: isize) {
@@ -12,7 +14,8 @@ pub fn add(x: isize, y: isize) {
 #[wasm_bindgen]
 pub struct Game { 
     fps: u16,
-    time_elapsed: u16
+    time_elapsed: u16,
+    cpu: CPU
 }
 
 #[wasm_bindgen]
@@ -21,7 +24,8 @@ impl Game {
     pub fn new(width: u32, height: u32) -> Self {
         Self { 
             fps: 0,
-            time_elapsed: 0
+            time_elapsed: 0,
+            cpu: CPU::new()
         }
     }
 
