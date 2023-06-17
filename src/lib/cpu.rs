@@ -6,10 +6,10 @@ pub struct CPU {
 }
 
 impl CPU {
-    pub fn new() -> Self {
+    pub fn new(rom_buffer: Vec<u8>) -> Self {
         let mut cpu = Self {
             regs: Registers::new(), 
-            mem: Memory::new()
+            mem: Memory::new(rom_buffer)
         };
         
         cpu.reset();
@@ -56,10 +56,6 @@ impl CPU {
         [$FF4A] = $00   ; WY
         [$FF4B] = $00   ; WX
         [$FFFF] = $00   ; IE */
-    }
-
-    pub fn load_rom(&mut self, buffer: Vec<u8>) {
-        self.mem.load_rom(buffer);
     }
 }
 

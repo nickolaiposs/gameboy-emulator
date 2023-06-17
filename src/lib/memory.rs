@@ -11,9 +11,9 @@ pub struct Memory {
 }
 
 impl Memory {
-    pub fn new() -> Self {
+    pub fn new(rom_buffer: Vec<u8>) -> Self {
         Self {
-            cart: Cartridge::new(),
+            cart: Cartridge::new(rom_buffer),
             vram: [0; 0x200],
             ram: [0; 0x200],
             oam: [0; 0xa0],
@@ -21,9 +21,5 @@ impl Memory {
             hram: [0; 0x80],
             ier: 0
         }
-    }
-
-    pub fn load_rom(&mut self, buffer: Vec<u8>) {
-        self.cart.load_rom(buffer);
     }
 }

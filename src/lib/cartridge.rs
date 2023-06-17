@@ -3,13 +3,11 @@ pub struct Cartridge {
 }
 
 impl Cartridge {
-    pub fn new() -> Self {
-        Self {
-            rombank: [0u8; 0x8000]
-        }
-    }
+    pub fn new(buffer: Vec<u8>) -> Self {
+        let mut rombank = [0u8; 0x8000];
 
-    pub fn load_rom(&mut self, buffer: Vec<u8>) {
-        self.rombank[..buffer.len()].copy_from_slice(&buffer);
+        Self {
+            rombank
+        }
     }
 }

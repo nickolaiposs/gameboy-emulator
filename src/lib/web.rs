@@ -21,22 +21,25 @@ pub struct Game {
 #[wasm_bindgen]
 impl Game {
     #[wasm_bindgen(constructor)]
-    pub fn new(width: u32, height: u32) -> Self {
-        Self { 
-            fps: 0,
-            time_elapsed: 0,
-            cpu: CPU::new()
-        }
-    }
-
-    pub fn load_rom(&mut self, byte_array: &Uint8Array) {
+    pub fn new(width: u32, height: u32, byte_array: &Uint8Array) -> Self {
         let mut buffer = vec![0; byte_array.length() as usize];
         byte_array.copy_to(&mut buffer);
 
-        //log testing
-        let result = format!("{:b}", buffer[64]);
-        console::log_1(&result.into());
+        Self { 
+            fps: 0,
+            time_elapsed: 0,
+            cpu: CPU::new(buffer)
+        }
     }
+
+    // pub fn load_rom(&mut self, byte_array: &Uint8Array) {
+    //     let mut buffer = vec![0; byte_array.length() as usize];
+    //     byte_array.copy_to(&mut buffer);
+
+    //     //log testing
+    //     let result = format!("{:b}", buffer[64]);
+    //     console::log_1(&result.into());
+    // }
 
     pub fn render(&mut self, ctx: &CanvasRenderingContext2d, width: u32, height: u32) -> Result<(), JsValue> { 
         let data = frame_data(width, height);
