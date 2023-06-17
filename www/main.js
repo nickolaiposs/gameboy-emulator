@@ -57,15 +57,20 @@ function fileBrowse(func, accept) {
 }
 
 /*---INPUT LISTENERS---*/
+// rom button
 const romButton = document.querySelector("#loadrom");
 romButton.onclick = () => fileBrowse(gameBoy.loadRom.bind(gameBoy), ".gb");
 
-
+// config modal
 document.querySelector("#controlexit").onclick = toggleConfig;
 document.querySelector("#configbutton").onclick = toggleConfig;
 
+// joypad
 document.addEventListener('keydown', (event) => { 
-    if (event.code in keymap) gameBoy.updateKeyInput(keymap[event.code], true) 
+    if (event.code in keymap) {
+        event.preventDefault();
+        gameBoy.updateKeyInput(keymap[event.code], true) 
+    }
 });
 
 document.addEventListener('keyup', (event) => { 
@@ -76,7 +81,4 @@ for (const [button, keyCode] of Object.entries(buttonmap)) {
     document.querySelector(button).onmousedown = () => { gameBoy.updateKeyInput(keyCode, true); };
     document.querySelector(button).onmouseup = () => { gameBoy.updateKeyInput(keyCode, false); };
 }
-
-/*---START GAMEBOY---*/
-//gameBoy.start();
 

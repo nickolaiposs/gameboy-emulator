@@ -10,22 +10,12 @@ class GameBoy {
         this.stopGame = null;
         this.rom = null;
         this.game = null;
-
-        // this.loadRom(rom_files)
-        // .then((result) => {
-        //     this.rom = rom;
-        // })
-        // .catch((error) => {
-        //     console.error(ex)
-        // });
-        
-        // this.game = new Game(canvas_width, canvas_height, this.rom);
     }
 
     loadRom(files) {
         if (files.length != 1) {
             alert("Invalid amount of files inserted");
-            return
+            return;
         }
     
         var rom = files[0];
