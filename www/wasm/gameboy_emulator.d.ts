@@ -12,12 +12,9 @@ export class Game {
 /**
 * @param {number} width
 * @param {number} height
-*/
-  constructor(width: number, height: number);
-/**
 * @param {Uint8Array} byte_array
 */
-  load_rom(byte_array: Uint8Array): void;
+  constructor(width: number, height: number, byte_array: Uint8Array);
 /**
 * @param {CanvasRenderingContext2D} ctx
 * @param {number} width
@@ -41,8 +38,7 @@ export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly add: (a: number, b: number) => void;
   readonly __wbg_game_free: (a: number) => void;
-  readonly game_new: (a: number, b: number) => number;
-  readonly game_load_rom: (a: number, b: number) => void;
+  readonly game_new: (a: number, b: number, c: number) => number;
   readonly game_render: (a: number, b: number, c: number, d: number, e: number) => void;
   readonly game_tick: (a: number, b: number) => void;
   readonly game_update_key_input: (a: number, b: number, c: number) => void;

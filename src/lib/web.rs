@@ -52,19 +52,23 @@ impl Game {
         self.time_elapsed += deltatime;
 
         if self.time_elapsed >= 1000 {
-            console::log_1(&self.fps.into());
+            let fps_string = format!("fps: {}", self.fps);
+            console::log_1(&fps_string.into());
             self.fps = 0;
             self.time_elapsed = 0;
         }
 
         self.fps += 1;
-        //console::log_1(&deltatime.into());
     }
 
     pub fn update_key_input(&mut self, key: u8, pressed: bool) {
         //log testing
-        let result = format!("{} {}", key, pressed);
-        console::log_1(&result.into());
+        let input_string = format!("{} {}", key, pressed);
+        console::log_1(&input_string.into());
+
+        self.cpu.update_key_input(key, pressed);
+        let joypad_string = format!("{:#b}", self.cpu.get_joypad());
+        console::log_1(&joypad_string.into());
     }
 }
 

@@ -3,39 +3,38 @@ import GameBoy from "./javascript/gameboy.js";
 
 await init();
 
-/*---JOYPAD INPUT MATCHING---*/
-/*  
-    A: 0
-    B: 1
-    SELECT: 2
-    START: 3
-    DPAD-RIGHT: 4
-    DPAD-LEFT: 5
-    DPAD-UP: 6
-    DPAD-DOWN: 7 
-*/
+/*---JOYPAD MAPPING---*/
+const Joypad = {
+    Right: 0,
+    Left: 1,
+    Up: 2,
+    Down: 3,
+    A: 4,
+    B: 5,
+    Select: 6,
+    Start: 7
+};
     
 const buttonmap = {
-    "#a-button": 0,
-    "#b-button": 1,
-    "#dpad-right": 4,
-    "#dpad-left": 5,
-    "#dpad-up": 6,
-    "#dpad-down": 7
+    "#dpad-right": Joypad.Right,
+    "#dpad-left": Joypad.Left,
+    "#dpad-up": Joypad.Up,
+    "#dpad-down": Joypad.Down,
+    "#a-button": Joypad.A,
+    "#b-button": Joypad.B
 };
         
 const keymap = {
-    "KeyA": 0,
-    "KeyB": 1,
-    "Enter": 2,
-    "Space": 3,
-    "ArrowRight": 4,
-    "ArrowLeft": 5,
-    "ArrowUp": 6,
-    "ArrowDown": 7
+    "ArrowRight": Joypad.Right,
+    "ArrowLeft": Joypad.Left,
+    "ArrowUp": Joypad.Up,
+    "ArrowDown": Joypad.Down,
+    "KeyA": Joypad.A,
+    "KeyB": Joypad.B,
+    "Enter": Joypad.Select,
+    "Space": Joypad.Start
 };
 
-    
 /*---INITIALIZE GAMEBOY OBJECT---*/
 const canvas = document.querySelector("#gamescreen");
 const ctx = canvas.getContext("2d");

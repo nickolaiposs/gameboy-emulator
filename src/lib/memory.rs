@@ -12,14 +12,34 @@ pub struct Memory {
 
 impl Memory {
     pub fn new(rom_buffer: Vec<u8>) -> Self {
+        let mut io = [0u8; 0x80];
+        io[0] = 0b11111111;
+
         Self {
             cart: Cartridge::new(rom_buffer),
             vram: [0; 0x200],
             ram: [0; 0x200],
             oam: [0; 0xa0],
-            io: [0; 0x80],
+            io,
             hram: [0; 0x80],
             ier: 0
         }
+    }
+
+    pub fn update_joypad(&mut self, key: u8, pressed: bool) {
+        // key should represent the bitwise position
+        // 0 is pressed
+
+        if pressed {
+            // this changes the bit to 0 at key position
+            self.io[0] &= !(1 << key);
+        } else {
+            // this changes the bit to 1 at key position
+            self.io[0] |= 1 << key;
+        }
+    }
+
+    pub fn get_joypad(&mut self) -> u8 {
+        self.io[0]
     }
 }

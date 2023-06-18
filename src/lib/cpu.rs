@@ -57,6 +57,14 @@ impl CPU {
         [$FF4B] = $00   ; WX
         [$FFFF] = $00   ; IE */
     }
+
+    pub fn update_key_input(&mut self, key: u8, pressed: bool){
+        self.mem.update_joypad(key, pressed);
+    }
+
+    pub fn get_joypad(&mut self) -> u8 {
+        self.mem.get_joypad()
+    }
 }
 
 
