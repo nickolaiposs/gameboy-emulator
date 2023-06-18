@@ -113,13 +113,13 @@ export class Game {
         wasm.__wbg_game_free(ptr);
     }
     /**
-    * @param {number} width
-    * @param {number} height
+    * @param {number} screen_width
+    * @param {number} screen_height
     * @param {Uint8Array} byte_array
     */
-    constructor(width, height, byte_array) {
+    constructor(screen_width, screen_height, byte_array) {
         try {
-            const ret = wasm.game_new(width, height, addBorrowedObject(byte_array));
+            const ret = wasm.game_new(screen_width, screen_height, addBorrowedObject(byte_array));
             return Game.__wrap(ret);
         } finally {
             heap[stack_pointer++] = undefined;

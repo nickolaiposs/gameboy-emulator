@@ -1,15 +1,17 @@
-use crate::{register::{Registers, GenReg, CombReg, FlagReg}, memory::Memory};
+use crate::{register::{Registers, GenReg, CombReg, FlagReg}, memory::Memory, lcd::LCD};
 
 pub struct CPU {
     regs: Registers,
-    mem: Memory
+    mem: Memory,
+    lcd: LCD
 }
 
 impl CPU {
-    pub fn new(rom_buffer: Vec<u8>) -> Self {
+    pub fn new(screen_width: u32, screen_height: u32, rom_buffer: Vec<u8>) -> Self {
         let mut cpu = Self {
             regs: Registers::new(), 
-            mem: Memory::new(rom_buffer)
+            mem: Memory::new(rom_buffer),
+            lcd: LCD::new(screen_width, screen_height)
         };
         
         cpu.reset();

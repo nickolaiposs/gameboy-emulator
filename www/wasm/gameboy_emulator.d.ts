@@ -10,11 +10,11 @@ export function add(x: number, y: number): void;
 export class Game {
   free(): void;
 /**
-* @param {number} width
-* @param {number} height
+* @param {number} screen_width
+* @param {number} screen_height
 * @param {Uint8Array} byte_array
 */
-  constructor(width: number, height: number, byte_array: Uint8Array);
+  constructor(screen_width: number, screen_height: number, byte_array: Uint8Array);
 /**
 * @param {CanvasRenderingContext2D} ctx
 * @param {number} width

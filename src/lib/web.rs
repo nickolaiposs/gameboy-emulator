@@ -21,14 +21,14 @@ pub struct Game {
 #[wasm_bindgen]
 impl Game {
     #[wasm_bindgen(constructor)]
-    pub fn new(width: u32, height: u32, byte_array: &Uint8Array) -> Self {
-        let mut buffer = vec![0; byte_array.length() as usize];
-        byte_array.copy_to(&mut buffer);
+    pub fn new(screen_width: u32, screen_height: u32, byte_array: &Uint8Array) -> Self {
+        let mut rom_buffer = vec![0; byte_array.length() as usize];
+        byte_array.copy_to(&mut rom_buffer);
 
         Self { 
             fps: 0,
             time_elapsed: 0,
-            cpu: CPU::new(buffer)
+            cpu: CPU::new(screen_width, screen_height, rom_buffer)
         }
     }
 
@@ -67,7 +67,7 @@ impl Game {
         console::log_1(&input_string.into());
 
         self.cpu.update_key_input(key, pressed);
-        let joypad_string = format!("{:#b}", self.cpu.get_joypad());
+        let joypad_string = format!("{:b}", self.cpu.get_joypad());
         console::log_1(&joypad_string.into());
     }
 }
