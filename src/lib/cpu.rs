@@ -67,6 +67,10 @@ impl CPU {
     pub fn get_joypad(&mut self) -> u8 {
         self.mem.get_joypad()
     }
+
+    pub fn get_screen_data(&mut self) -> &Vec<u8> {
+        self.lcd.get_screen_data()
+    }
 }
 
 

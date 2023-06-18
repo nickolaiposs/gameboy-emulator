@@ -42,8 +42,8 @@ impl Game {
     // }
 
     pub fn render(&mut self, ctx: &CanvasRenderingContext2d, width: u32, height: u32) -> Result<(), JsValue> { 
-        let data = frame_data(width, height);
-        let data = ImageData::new_with_u8_clamped_array_and_sh(Clamped(&data), width, height)?;
+        let data = self.cpu.get_screen_data();
+        let data = ImageData::new_with_u8_clamped_array_and_sh(Clamped(data), width, height)?;
     
         ctx.put_image_data(&data, 0.0, 0.0)
     }
@@ -70,19 +70,4 @@ impl Game {
         let joypad_string = format!("{:b}", self.cpu.get_joypad());
         console::log_1(&joypad_string.into());
     }
-}
-
-fn frame_data(width: u32, height: u32) -> Vec<u8> {
-    let mut frame_data: Vec<u8> = Vec::new();
-
-    for _x in 0..width {
-        for _y in 0..height {
-            frame_data.push(255);
-            frame_data.push(0);
-            frame_data.push(0);
-            frame_data.push(255);
-        }
-    }
-
-    frame_data
 }
