@@ -27,13 +27,10 @@ impl Memory {
     }
 
     pub fn update_joypad(&mut self, key: u8, pressed: bool) {
-        // key should represent the bitwise position
-        // 0 is pressed
+        // 0 = keydown, 1 = keyup
         if pressed {
-            // this changes the bit to 0 at key position
             self.io[0] &= !(1 << key);
         } else {
-            // this changes the bit to 1 at key position
             self.io[0] |= 1 << key;
         }
     }
