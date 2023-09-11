@@ -20,14 +20,14 @@ class GameBoy {
     
         var rom = files[0];
         var fileExtension = rom.name.split(".").pop().toLowerCase();
-    
+
         if (fileExtension != "gb") {
             alert("Invalid file type");
             return;
         }
     
         var fileReader = new FileReader();
-
+        
         fileReader.onload = (event) => {
             this.rom = new Uint8Array(event.target.result);
             this.game = new Game(this.canvas_width, this.canvas_height, this.rom);
