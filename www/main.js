@@ -62,7 +62,7 @@ romButton.onclick = () => fileBrowse(gameBoy.loadRom.bind(gameBoy), ".gb");
 
 // config modal
 document.querySelector("#controlexit").onclick = toggleConfig;
-document.querySelector("#configbutton").onclick = toggleConfig;
+// document.querySelector("#configbutton").onclick = toggleConfig;
 
 // joypad
 document.addEventListener('keydown', (event) => { 
