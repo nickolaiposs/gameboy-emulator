@@ -6,6 +6,10 @@ A Game Boy emulator made in Rust. This is a WIP project whose goal is to make an
 
 This emulator requires ROM files intended for the Game Boy. Do not distribute or download ROMs from official Nintendo Game Boy titles. You can attain ROMs through ripping from Game Boy cartridges that you personally own, or you can download free fan-made ROMs. 
 
+## SETUP
+
+Requires [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/) for development. Run ./build-wasm.sh whenever you want to build the wasm files. To be configured: git pre-commit hooks.
+
 ## Credits
 - [Game Boy CPU Manual](http://marc.rawer.de/Gameboy/Docs/GBCPUman.pdf)
 - [Intel 8080 Microcomputer Systems Manual](http://bitsavers.trailing-edge.com/components/intel/MCS80/98-153B_Intel_8080_Microcomputer_Systems_Users_Manual_197509.pdf)
