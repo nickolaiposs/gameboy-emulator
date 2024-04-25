@@ -8,7 +8,7 @@ This emulator requires ROM files intended for the Game Boy. Do not distribute or
 
 ## Setup
 
-Requires [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/) for development. Run ./build-wasm.sh whenever you want to build the wasm files. To be configured: git pre-commit hooks.
+Requires [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/) for development. Run `./build-wasm.sh` whenever you want to build the wasm files. To be configured: git pre-commit hooks.
 
 ## Credits
 - [Game Boy CPU Manual](http://marc.rawer.de/Gameboy/Docs/GBCPUman.pdf)
